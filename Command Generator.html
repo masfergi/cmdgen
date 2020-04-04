@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.center{
+	margin-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+}
+.command{
+    width: 100%;
+	margin: auto;
+}
+.linkauth{
+    width: 100%;
+	margin: auto;
+}
+.linkauth2{
+    width: 101%;
+	margin: auto;
+}
+</style>
+</head>
+<body>
+<div class="center">
+<input type="text" id="myLink" class="linkauth" value="LINK">
+<input type="text" id="myAuthor" class="linkauth" value="AUTHOR, TITLE">
+<input type="text" id="command" class="command">
+<button class="linkauth2" onclick="myFunction()">Generate</button>
+<button class="linkauth2" onclick="myFunction2()">Copy</button>
+</div>
+<script>
+function myFunction() {
+
+	var n = document.getElementById("myLink").value;
+	var a = document.getElementById("myAuthor").value;
+    var d = new Date();
+    var date = d.getUTCDate();
+    var month = d.getUTCMonth() + 1;
+    var year = d.getUTCFullYear();
+    var dateStr = year + " " + month + " " + date;
+  	var str1 = "streamlink  --pixiv-sessionid 44729911_FscKOvdjFrrpmhok2KfKacNZAtlxf6WX --pixiv-devicetoken token%3D20170203%26n_o%3D1%26n_v%3D0%26b_o%3D0%26b_v%3D0%26t_o%3D2%26t_v%3D0%26e_o%3D3%26e_v%3D0%26f_o%3D4%26f_v%3D0  \"";
+  	var str2 =  n;
+  	var str3 =  "\" best -o \"C:/Python38-32/strmlnk/";
+  	var str4 =  a + " ";
+  	var str5 = dateStr + "\"";
+  	var res = str1.concat(str2, str3, str4, str5);
+  	document.getElementById('command').value = res;
+}
+function myFunction2() {
+	var copyText = document.getElementById("command");
+    copyText.select();
+    document.execCommand("copy");
+}
+</script>
+</body>
+</html>
