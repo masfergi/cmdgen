@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.title{
+    font-family: Consolas; 
+    font-size: xx-large;
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 26.4px;
+    color: #00abff;
+}
+.center{
+	margin-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+    	font-family: Consolas,monaco,monospace; 
+	font-size: x-large;
+}
+.command{
+    	width: 100%;
+	margin: auto;
+    	font-family: Consolas,monaco,monospace; 
+	font-size: x-large;
+}
+.linkauth{
+    	width: 100%;
+	margin: auto;
+    	font-family: Consolas,monaco,monospace; 
+	font-size: x-large;
+}
+.linkauth2{
+    	width: 100.9%;
+	margin: auto;
+    	font-family: Consolas,monaco,monospace; 
+	font-size: x-large;
+}
+.credit{
+	font-family: Consolas,monaco,monospace; 
+	font-size: medium;
+}
+</style>
+</head>
+<body>
+<div class="center">
+<center><p class="title">Sketch Pixiv</p></center>
+<input type="text" id="myLink" class="linkauth" value="link of the stream">
+<input type="text" id="myAuthor" class="linkauth" value="artist name and title">
+<input type="text" id="command" class="command"><br>
+<center><button class="linkauth2" onclick="myFunction()">Generate</button></center>
+<center><button class="linkauth2" onclick="myFunction2()">Copy</button></center>
+<p class="credit">m45ver61</p>
+</div>
+<script>
+function myFunction() {
+
+	var n = document.getElementById("myLink").value;
+	var a = document.getElementById("myAuthor").value;
+    var d = new Date();
+    var date = d.getUTCDate();
+    var month = d.getUTCMonth() + 1;
+    var datestring = date.toString();
+    var monthstring = month.toString();
+    var datepad = datestring.padStart(2, '0');
+    var monthpad = monthstring.padStart(2, '0');
+    var year = d.getUTCFullYear();
+    var dateStr = year + " " + monthpad + " " + datepad;
+  	var str1 = "streamlink  --pixiv-sessionid 44729911_FscKOvdjFrrpmhok2KfKacNZAtlxf6WX --pixiv-devicetoken token%3D20170203%26n_o%3D1%26n_v%3D0%26b_o%3D0%26b_v%3D0%26t_o%3D2%26t_v%3D0%26e_o%3D3%26e_v%3D0%26f_o%3D4%26f_v%3D0  \"";
+  	var str2 =  n;
+  	var str3 =  "\" best -o \"C:/Python38-32/strmlnk/";
+  	var str4 =  dateStr + " ";
+  	var str5 = a + "\"";
+  	var res = str1.concat(str2, str3, str4, str5);
+  	document.getElementById('command').value = res;
+}
+function myFunction2() {
+	var copyText = document.getElementById("command");
+    copyText.select();
+    document.execCommand("copy");
+}
+</script>
+</body>
+</html>
